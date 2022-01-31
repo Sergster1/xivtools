@@ -127,6 +127,15 @@ lazy_static::lazy_static! {
                 wait_ms: 2500
             }
         );
+		
+		h.insert("prudent synthesis",
+            Action {
+                name: "Prudent Synthesis",
+                gui_name: im_str!("Prudent Synthesis"),
+                wait_ms: 2500
+            }
+        );
+		
         // Quality Actions
         h.insert("basic touch",
             Action {
@@ -205,6 +214,23 @@ lazy_static::lazy_static! {
                 wait_ms: 2500
             }
         );
+		
+		h.insert("advanced touch",
+            Action {
+                name: "Advanced Touch",
+                gui_name: im_str!("Advanced Touch"),
+                wait_ms: 2500
+            }
+        );
+		
+		h.insert("trained finesse",
+            Action {
+                name: "Trained Finesse",
+                gui_name: im_str!("Trained Finesse"),
+                wait_ms: 2500
+            }
+        );
+		
         // Repair Actions
         h.insert("manipulation",
             Action {
