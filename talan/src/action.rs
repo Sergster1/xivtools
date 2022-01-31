@@ -28,24 +28,10 @@ lazy_static::lazy_static! {
                 wait_ms: 1500
             }
         );
-        h.insert("inner quiet",
-            Action {
-                name: "Inner Quiet",
-                gui_name: im_str!("Inner Quiet"),
-                wait_ms: 1500
-            }
-        );
         h.insert("innovation",
             Action {
                 name: "Innovation",
                 gui_name: im_str!("Innovation"),
-                wait_ms: 1500
-            }
-        );
-        h.insert("name of the elements",
-            Action {
-                name: "Name of the Elements",
-                gui_name: im_str!("Name of the Elements"),
                 wait_ms: 1500
             }
         );
@@ -75,13 +61,6 @@ lazy_static::lazy_static! {
             Action {
                 name: "Basic Synthesis",
                 gui_name: im_str!("Basic Synthesis"),
-                wait_ms: 2500
-            }
-        );
-        h.insert("brand of the elements",
-            Action {
-                name: "Brand of the Elements",
-                gui_name: im_str!("Brand of the Elements"),
                 wait_ms: 2500
             }
         );
@@ -127,7 +106,6 @@ lazy_static::lazy_static! {
                 wait_ms: 2500
             }
         );
-		
 		h.insert("prudent synthesis",
             Action {
                 name: "Prudent Synthesis",
@@ -162,13 +140,6 @@ lazy_static::lazy_static! {
             Action {
                 name: "Hasty Touch",
                 gui_name: im_str!("Hasty Touch"),
-                wait_ms: 2500
-            }
-        );
-        h.insert("patient touch",
-            Action {
-                name: "Patient Touch",
-                gui_name: im_str!("Patient Touch"),
                 wait_ms: 2500
             }
         );
@@ -214,7 +185,6 @@ lazy_static::lazy_static! {
                 wait_ms: 2500
             }
         );
-		
 		h.insert("advanced touch",
             Action {
                 name: "Advanced Touch",
@@ -222,7 +192,6 @@ lazy_static::lazy_static! {
                 wait_ms: 2500
             }
         );
-		
 		h.insert("trained finesse",
             Action {
                 name: "Trained Finesse",
@@ -246,6 +215,7 @@ lazy_static::lazy_static! {
                 wait_ms: 2500
             }
         );
+		
         // Other Actions
         h.insert("delicate synthesis",
             Action {
@@ -268,6 +238,39 @@ lazy_static::lazy_static! {
                 wait_ms: 2500
             }
         );
+		
+		//Legacy Actions (removed)
+		/*h.insert("inner quiet",
+            Action {
+                name: "Inner Quiet",
+                gui_name: im_str!("Inner Quiet"),
+                wait_ms: 1500
+            }
+        );
+		
+        h.insert("name of the elements",
+            Action {
+                name: "Name of the Elements",
+                gui_name: im_str!("Name of the Elements"),
+                wait_ms: 1500
+            }
+        );
+
+        h.insert("brand of the elements",
+            Action {
+                name: "Brand of the Elements",
+                gui_name: im_str!("Brand of the Elements"),
+                wait_ms: 2500
+            }
+        );
+        h.insert("patient touch",
+            Action {
+                name: "Patient Touch",
+                gui_name: im_str!("Patient Touch"),
+                wait_ms: 2500
+            }
+        );*/
+
         h
     };
 }
