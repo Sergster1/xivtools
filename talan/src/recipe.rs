@@ -35,7 +35,7 @@ impl From<&xivapi::ApiRecipe> for Recipe {
 
         let mut mats = Vec::new();
         for (opt_mat, cnt) in recipe_mats.iter() {
-            if let Some(mat) = opt_mat {
+            if let Some(mat) = opt_mat.as_ref().left() {
                 mats.push(RecipeMaterial {
                     id: mat.ID,
                     name: mat.Name.to_owned(),
