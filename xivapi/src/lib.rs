@@ -1,7 +1,8 @@
 use anyhow::{anyhow, Error, Result};
+use either::Either;
 use log;
 use serde::Deserialize;
-use serde_json;
+use serde_json::Value;
 use std::cmp::Ordering;
 use std::collections::HashMap;
 
@@ -58,12 +59,18 @@ pub struct ApiRecipe {
     pub DurabilityFactor: u32,
     pub QualityFactor: u32,
     pub IsSpecializationRequired: u32,
-    pub ItemIngredient0: Option<ItemIngredient>,
-    pub ItemIngredient1: Option<ItemIngredient>,
-    pub ItemIngredient2: Option<ItemIngredient>,
-    pub ItemIngredient3: Option<ItemIngredient>,
-    pub ItemIngredient4: Option<ItemIngredient>,
-    pub ItemIngredient5: Option<ItemIngredient>,
+    #[serde(with = "either::serde_untagged")]
+    pub ItemIngredient0: Either<ItemIngredient, Value>,
+    #[serde(with = "either::serde_untagged")]
+    pub ItemIngredient1: Either<ItemIngredient, Value>,
+    #[serde(with = "either::serde_untagged")]
+    pub ItemIngredient2: Either<ItemIngredient, Value>,
+    #[serde(with = "either::serde_untagged")]
+    pub ItemIngredient3: Either<ItemIngredient, Value>,
+    #[serde(with = "either::serde_untagged")]
+    pub ItemIngredient4: Either<ItemIngredient, Value>,
+    #[serde(with = "either::serde_untagged")]
+    pub ItemIngredient5: Either<ItemIngredient, Value>,
     pub GameContentLinks: Option<GameContentLinks>,
 }
 
@@ -180,6 +187,8 @@ pub fn query_recipe(item_name: &str) -> Result<Vec<ApiRecipe>, Error> {
         .query("string", item_name.trim())
         .call()
         .into_string()?;
+
+    std::fs::write("test.json", body.as_bytes()).unwrap();
     let mut r: ApiReply<ApiRecipe> = serde_json::from_str(&body)?;
     r.Results.sort();
     log::trace!("{:#?}", r.Results);
@@ -287,7 +296,7 @@ mod test {
 
     #[test]
     fn recipe_specialization() -> Result<()> {
-        let inputs = [("True Barding of Light", 1), ("Hades Barding", 0)];
+        let inputs = [("True Barding of Light", 0), ("Hades Barding", 0)];
 
         for input in &inputs {
             let api_results = query_recipe(input.0)?;
